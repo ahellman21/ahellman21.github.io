@@ -92,6 +92,7 @@ function chosePaladin() {
     document.getElementById("actions").style.visibility = "visible";
     document.getElementById("fighterHitpoints").innerHTML = "Your hitpoints = " + fighter.hitpoints;
     // document.getElementsByClassName("header").innerHTML = "Choose your first opponent."
+    document.getElementById("pally").onclick = "";
   }
   else if (selectedChars.indexOf("P") === -1) {
     selectedChars.push("P");
@@ -102,6 +103,8 @@ function chosePaladin() {
     fighterHTML.style.borderColor = "red";
     document.getElementById("enemyHitpoints").innerHTML = enemy.profession + "'s hitpoints = " + enemy.hitpoints;
     document.getElementById("attacks").style.visibility = "visible";
+    document.getElementById("wiz").onclick = "";
+    document.getElementById("cler").onclick = "";
   }
 }
 
@@ -121,6 +124,7 @@ function choseWizard() {
     document.getElementById("actions").style.visibility = "visible";
     document.getElementById("fighterHitpoints").innerHTML = "Your hitpoints = " + fighter.hitpoints;
     // document.getElementsByClassName("header").innerHTML = "Choose your first opponent."
+    document.getElementById("wiz").onclick = "";
   }
   else if (selectedChars.indexOf("W") === -1) {
     selectedChars.push("W");
@@ -131,6 +135,8 @@ function choseWizard() {
     fighterHTML.style.borderColor = "red";
     document.getElementById("enemyHitpoints").innerHTML = enemy.profession + "'s hitpoints = " + enemy.hitpoints;
     document.getElementById("attacks").style.visibility = "visible";
+    document.getElementById("pally").onclick = "";
+    document.getElementById("cler").onclick = "";
   }
 }
 
@@ -150,6 +156,7 @@ function choseCleric() {
     document.getElementById("actions").style.visibility = "visible";
     document.getElementById("fighterHitpoints").innerHTML = "Your hitpoints = " + fighter.hitpoints;
     // document.getElementsByClassName("header").innerHTML = "Choose your first opponent."
+    document.getElementById("cler").onclick = "";
   }
   else if (selectedChars.indexOf("C") === -1) {
     selectedChars.push("C");
@@ -160,9 +167,10 @@ function choseCleric() {
     fighterHTML.style.borderColor = "red";
     document.getElementById("enemyHitpoints").innerHTML = enemy.profession + "'s hitpoints = " + enemy.hitpoints;
     document.getElementById("attacks").style.visibility = "visible";
+    document.getElementById("wiz").onclick = "";
+    document.getElementById("pally").onclick = "";
   }
 }
-
 
 function weaponAttack() {
   document.getElementById("attackResults").style.visibility = "visible";
