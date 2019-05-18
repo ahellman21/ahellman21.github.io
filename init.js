@@ -249,6 +249,8 @@ function checkDeath() {
     document.getElementById("playAgain").style.visibility = "visible";
   } else if (enemy.hitpoints <= 0) {
     document.getElementById("enemyHitpoints").innerHTML = enemy.name + "has died. You win!";
+    document.getElementById("attacks").style.visibility = "hidden";
+    document.getElementById("attackResults").style.visibility = "hidden";
     document.getElementById("playAgain").style.visibility = "visible";
   } else {
     document.getElementById("fighterHitpoints").innerHTML = "Your hitpoints = " + fighter.hitpoints;
