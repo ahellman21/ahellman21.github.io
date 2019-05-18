@@ -1,180 +1,42 @@
+<!-- Homework 2.1 -->
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Aaron Hellman's CEP Engineering Application</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css"/>
+  <link href="http://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
+  <!-- <script src="init.js"></script> -->
+  <script type="text/javascript" src="init.js"></script>
+<head>
+</head>
 
-    <script src="init.js"></script>
+<body>
+  <title>Aaron Hellman HW4</title>
 
-    <script>
-    $(document).ready(function(){
-
-      $("#firstName").click(function(){
-        var $self = $(this);
-        $self.html();
-        if ($self.html() == "First Name"){
-          $self.Text = personal_info.firstName;
-          $self.html(personal_info.firstName);
-        }
-        else {
-          $self.Text = "First Name";
-          $self.html("First Name");
-        }
-        });
-
-      $("#lastName").click(function(){
-        var $self = $(this);
-        $self.html();
-        if ($self.html() == "Last Name"){
-          $self.Text = personal_info.lastName;
-          $self.html(personal_info.lastName);
-        }
-        else {
-          $self.Text = "Last Name";
-          $self.html("Last Name");
-        }
-        });
-
-      $("#jobTitle").click(function(){
-        var $self = $(this);
-        $self.html();
-        if ($self.html() == "Job Title"){
-          $self.Text = personal_info.jobTitle;
-          $self.html(personal_info.jobTitle);
-        }
-        else {
-          $self.Text = "Job Title";
-          $self.html("Job Title");
-        }
-        });
-
-      $("#homeOffice").click(function(){
-        var $self = $(this);
-        $self.html();
-        if ($self.html() == "Home Office"){
-          $self.Text = personal_info.homeOffice;
-          $self.html(personal_info.homeOffice);
-        }
-        else {
-          $self.Text = "Home Office";
-          $self.html("Home Office");
-        }
-        });
-
-      $("#tellMeMore").click(function(){
-        $(".tellMeMore_txt").slideToggle("fast");
-        });
-      });
-
-      $("#bookAPI").click(function(){
-       console.log("hii");
-       $.ajax({
-        url:"https://openlibrary.org/api/books?bibkeys=OLID:OL262758W&format=json&jscmd=data",
-        success:function(response){
-          var r=JSON.parse(response);
-          $("#main").html(r.base);
-         }
-       });
-      });
-
-    $("#expeAPI").click(function(){
-      var $self = $(this);
-      (function() {
-        var flickerAPI = "https://api.iextrading.com/1.0/stock/market/batch?symbols=expe&types=quote";
-        $.getJSON( flickerAPI)
-          .done(function( data ) {
-              // do something here;
-              // $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
-              // $(latestPrice);
-              $self.Text =data.latestPrice;
-            });
-          });
-
-      fetch('https://api.iextrading.com/1.0/stock/market/batch?symbols=expe&types=quote')
-        .then(function(response) {
-          return response.json();
-        })
-        .then(function(myJson) {
-          console.log(JSON.stringify(myJson));
-        });
-        });
-
-    </script>
-
-  </head>
-  <body>
-    <h1><b>Aaron Hellman</b></h1>
-    <h2>Current Role: Data Analyst</h2>
-
-    <br>
-    <img class="main_pic" src="img/koala.jpg" width="600" height="400" alt="Aaron Operah House" style="float">
-
-    <div class="divTable">
-      <div class="divTableRow">
-
-        <div class="FNcontainer">
-          <img src="img/operahouse.jpg" style="transform: rotate(180deg);">
-          <button id="firstName" class="btn" value="First Name">First Name</button>
-          <!-- <button id="firstName" class="btn" onclick="FNchange()" value="First Name">First Name</button> -->
-        </div>
-
-        <div class="FNcontainer">
-          <img src="img/ww1memorial.jpg">
-          <button id="lastName" class="btn" value="Last Name">Last Name</button>
-        </div>
-      </div>
-
-    <div class="divTableRow">
-      <div class="FNcontainer">
-        <img src="img/longhorns.jpg" style="transform: rotate(180deg);">
-        <button id="jobTitle" class="btn" value="Job Title">Job Title</button>
-      </div>
-
-      <div class="FNcontainer">
-        <img src="img/mel_dt.jpg" style="transform: rotate(180deg);">
-        <button id="homeOffice" class="btn" value="Home Office">Home Office</button>
-      </div>
+  <section class="display">
+    <div id = "header" class="header">Choose your class wisely!</div>
+    <div class="classes">
+      <div id = "pally" class="classes fighter--paladin" style="cursor: pointer;" onclick="chosePaladin()">Paladin</div>
+      <div id = "wiz" class="classes fighter--wizard" style="cursor: pointer;" onclick="choseWizard()">Wizard</div>
+      <div id = "cler" class="classes fighter--cleric" style="cursor: pointer;" onclick="choseCleric()">Cleric</div>
     </div>
+  </section>
 
-  </div>
-
-  <div class="divTable">
-    <div class="divTableRow">
-      <div class="FNcontainer">
-        <img src="img/falls.jpg" style="width:50%">
-        <button id="tellMeMore" class="btn" value="Tell Me More" style="transform: translate(165%, -100%)">Tell Me More</button>
-        <p class="tellMeMore_txt">Hi! Welcome to the second website I have ever built. I am currently a data analyst in financial planning and analysis that is implementing machine learning and data science with Python in our financial forecasts. I like what I am doing and am happy that it is getting me on a course to be a Data Scientist but feel that I need more technical knowledge to further support my team. That is the reason that I am applying for this course. I hope you like the site!</p>
-      </div>
+  <section id = "actions" class="actions">
+    <div class="hitpoints"></div>
+    <p id="fighterHitpoints">Your hitpoints: </p>
+    <p id="enemyHitpoints">Enemy hitpoints: </p>
+    <div id = "attacks" class="attacks">
+      <button type="button" name="weaponAttack" onclick="weaponAttack()">Weapon Attack</button>
+      <button type="button" name="castSmite" onclick="smite()">Cast Smite</button>
+      <button type="button" name="castFire" onclick="fireball()">Cast Fireball</button>
     </div>
-  </div>
-
-  <!-- API Scripts -->
-  <script type="text/javascript">
-
-  </script>
-
-  <div class="api">
-    <!-- <button id="bookAPI" class="apibtn" onclick="api_fetch(); apiFunc();" value="Favorite Book">Favorite Book</button> -->
-    <!-- <button id="bookAPI" class="apibtn" value="Favorite Book">Favorite Book</button>
-    <div class="api_bookreturn">
-      <p id="api_title">"title"</p>
-      <p id="api_author">"author"</p>
-      <p id="api_image">"image"</p>
-    </div> -->
-
-    <button id="expeAPI" class="apibtn" value="EXPE Stock Price">EXPE Stock Price</button>
-    <div class="api_expe_return">
-      <p id="api_expe">"Stock Price"</p>
+    <div id = "attackResults" class="attackResults">
+      <p id = "outgoingAttack"></p>
+      <p id = "incomingAttack"></p>
     </div>
+  </section>
+  <button id = "playAgain" type="button" name="playAgain" onclick="playAgain()">Play Again?</button>
 
-  </div>
+</body>
 
-
-    <h3><span class="rainbow">Welcome to my page, I hope your day is <strong>AWESOME!</strong></span></h3>
-    <script src="init.js"></script>
-  </body>
 </html>
